@@ -29,8 +29,20 @@ import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { portfolioProjects } from "@/lib/portfolio-data";
 
+
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        href: "/favicon.png",
+      },
+    ],
     meta: [
       { title: "Arfan Asgar — Aspiring AI/ML Engineer" },
       {
@@ -53,6 +65,7 @@ export const Route = createFileRoute("/")({
   }),
   component: PortfolioHome,
 });
+
 
 type Theme = "light" | "dark";
 
