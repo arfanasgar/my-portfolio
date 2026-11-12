@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -85,7 +85,7 @@ function PortfolioHome() {
 
   // Every fresh page load starts in light mode.
   useEffect(() => {
-    document.documentElement.dataset.theme = "light";
+    document.documentElement.dataset["theme"] = "light";
     setTheme("light");
 
     const onScroll = () => {
@@ -109,7 +109,7 @@ function PortfolioHome() {
     const nextTheme: Theme =
       theme === "dark" ? "light" : "dark";
 
-    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.dataset["theme"] = nextTheme;
     setTheme(nextTheme);
   };
 
@@ -409,12 +409,9 @@ function PortfolioHome() {
 
             <div className="divide-y divide-line-subtle border-y border-line-subtle">
               {portfolioProjects.map((project) => (
-                <Link
+                <article
                   key={project.slug}
-                  to="/projects/$slug"
-                  params={{ slug: project.slug }}
-                  aria-label={`View ${project.title} case study`}
-                  className="project-row group grid gap-4 px-4 py-6 sm:grid-cols-[56px_1fr_200px_32px] sm:items-center sm:px-5 sm:py-7"
+                  className="project-row grid gap-4 px-4 py-6 sm:grid-cols-[56px_1fr_200px] sm:items-center sm:px-5 sm:py-7"
                 >
                   <span className="font-mono text-[11px] text-copy-muted">
                     {project.number}
@@ -433,9 +430,7 @@ function PortfolioHome() {
                   <span className="hidden text-xs text-copy-muted sm:block">
                     {project.category}
                   </span>
-
-                  <ArrowUpRight className="project-row__arrow hidden size-[17px] text-copy-muted sm:block" />
-                </Link>
+                </article>
               ))}
             </div>
 
